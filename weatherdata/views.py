@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from utilities import data
+from . import data
 
 
 def index(request):
