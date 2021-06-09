@@ -1,12 +1,18 @@
 import requests
 
-# r = requests.get("https://data.121.com.cn/szmbdata/open/openData.do?type=12&appid=%221621936919915%22&appKey=%22f7ebe38a-b187-4ed7-badc-3d3a4570e8a3%22&parameter=G3567")
-# r = r.json()['data'][0]
-# l = r.values()
-
-l = ['2021-06-01 18:00', '26.5', '1001.3', '97', '10.821', '1.1', '1.6', '东南']
+r = requests.get("https://data.121.com.cn/szmbdata/open/openData.do?type=12&appid=%221621936919915%22&appKey=%22f7ebe38a-b187-4ed7-badc-3d3a4570e8a3%22&parameter=G3567")
+r = r.json()['data'][0]
+l = list(r.values())
  
 h = """
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>实时天气</title>
+</head>
+
+<body>
 <h1>最新天气数据（整点）</h1>
 <table border = "1">
     <tr>
@@ -30,4 +36,6 @@ h = """
         <td>{}</td>
     </tr>
 </table>
+</body>
+</html>
 """.format(l[0], l[1], l[2], l[3], l[4], l[5], l[6], l[7])
