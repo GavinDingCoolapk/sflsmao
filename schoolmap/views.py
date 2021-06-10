@@ -8,14 +8,14 @@ def uploadImg(request):
             img=request.FILES.get('img')
         )
         new_img.save()
-    return render(request,'schoolmap/uploadimg.html')
+    return render(request, 'schoolmap/templates/schoolmap/uploadimg.html')
 
 def showImg(request):
     imgs = IMG.objects.all()
-    content ={
-        'imgs':imgs,
+    content = {
+        'imgs': imgs,
     }
-    return render(request,'schoolmap/showimg.html',content)
+    return render(request, 'schoolmap/showimg.html', content)
 
 def index(request):
     return HttpResponse(data.h)
