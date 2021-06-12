@@ -18,4 +18,4 @@ def showImg(request):
     return render(request, 'schoolmap/showimg.html', content)
 
 def index(request):
-    return HttpResponse(data.h)
+    return HttpResponse("<br><img src='/static/wholemap.png' alt='no picture'>")
