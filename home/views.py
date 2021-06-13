@@ -40,7 +40,7 @@ from django.urls import reverse
 
 
 def index(request):
-    s = "<br><img src='/static/homepicture.png' alt='no picture'>" +\
+    s = "<a href='" + reverse("weatherdata") + "'>" + "天气实时数据</a></br>" +\
         "<a href='" + reverse("schoolmap") + "'>" + "学校地图</a>" +\
-        "<a href='" + reverse("weatherdata") + "'>" + "天气实时数据</a>"
+        "<br><img src='/static/homepicture.png' alt='no picture'>"
     return HttpResponse(s)

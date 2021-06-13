@@ -5,7 +5,8 @@ from django.urls import reverse
 
 
 def index(request):
-    s = "<br><img src='/static/wholemap.png' alt='no picture'>" +\
+    s = "<a href='" + reverse("weatherdata") + "'>" + "天气实时数据</a><br/>" +\
+        "<br><img src='/static/wholemap.png' alt='no picture'><br/>" +\
         "<a href='" + reverse("home") + "'>" + "返回首页</a>"
     return HttpResponse(s)
 
@@ -16,7 +17,7 @@ def uploadImg(request):
             img=request.FILES.get('img')
         )
         new_img.save()
-    return render(request, 'schoolmap/templates/schoolmap/uploadimg.html')
+    return render(request, 'schoolmap/templates/uploadimg.html')
 
 
 def showImg(request):
@@ -24,5 +25,5 @@ def showImg(request):
     content = {
         'imgs': imgs,
     }
-    return render(request, 'schoolmap/showimg.html', content)
+    return render(request, 'schoolmap/templates/showimg.html', content)
 
