@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from .models import IMG
 from django.http import HttpResponse
+from django.urls import reverse
+
+
+def index(request):
+    s = "<br><img src='/static/wholemap.png' alt='no picture'>" +\
+        "<a href='" + reverse("home") + "'>" + "返回首页</a>"
+    return HttpResponse(s)
+
 
 def uploadImg(request):
     if request.method == 'POST':
@@ -10,6 +18,7 @@ def uploadImg(request):
         new_img.save()
     return render(request, 'schoolmap/templates/schoolmap/uploadimg.html')
 
+
 def showImg(request):
     imgs = IMG.objects.all()
     content = {
@@ -17,5 +26,3 @@ def showImg(request):
     }
     return render(request, 'schoolmap/showimg.html', content)
 
-def index(request):
-    return HttpResponse("<br><img src='/static/wholemap.png' alt='no picture'>")
